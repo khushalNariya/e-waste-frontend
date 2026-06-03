@@ -1,15 +1,15 @@
-import './App.css';
+import './assets/styles/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PublicLayout from './Component/PublicLayout';
-import AdminLayout from './Admin/Layout/AdminLayout';
-import './admin.css';
+import PublicLayout from './layouts/PublicLayout';
+import AdminLayout from './pages/admin/shared/layout/AdminLayout';
+import './assets/styles/admin.css';
 
-// import Header from './Component/Header';
-// import Footer from './Component/Footer';
-// import Home from './Component/Home';
-// import About from './Component/About';
-// import Login from './Component/Login';
-// import SignUp from './Component/Sign-Up';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
+// import Home from './pages/user/home/Home';
+// import About from './pages/user/about/About';
+// import Login from './pages/user/auth/Login';
+// import SignUp from './pages/user/auth/Sign-Up';
 // import Admin_Header from './Admin/Header';
 
 // import "bootstrap-icons/font/bootstrap-icons.css";

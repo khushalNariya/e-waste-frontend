@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // Bootstrap global
@@ -9,8 +9,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 // css Global
-import "./style.css";
-import './admin.css';
+import "./assets/styles/style.css";
+import './assets/styles/admin.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

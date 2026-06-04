@@ -32,7 +32,7 @@ graph TD
 ## 🌟 Key Product Features
 
 ### 1. 🧑‍💻 Public Eco-System (User Facing Portal)
-*   **Dynamic Drop-Point Locator (Leaflet & Mapbox GL):** Interactive map integration with custom marker groupings showing certified local e-waste collection bins, complete with geofenced distance calculations and routing instructions.
+*   **Dynamic Drop-Point Locator (Leaflet & OpenStreetMap):** Interactive map integration with custom marker groupings showing certified local e-waste collection bins, complete with geofenced distance calculations and routing instructions.
 *   **Verified E-Waste Submission Form:** A seamless multi-step submission portal where users register e-waste items, specify brand/model, upload images, and describe their conditions.
 *   **Interactive Incentive Rules:** Transparent conversion rules letting users calculate expected wallet returns prior to dropping off items.
 *   **Premium Reward Store:** A sleek, fluid retail experience featuring category-based filtering, reactive search parameters, and point-range filters.
@@ -56,7 +56,7 @@ graph TD
 *   **UI Library & Core:** React 19 (Hooks, Context API, Modular Architecture)
 *   **Routing System:** React Router Dom v7 (Layout nesting, private/public routing splits, dynamic parameter matching)
 *   **Styling & Responsiveness:** Vanilla CSS Custom Properties (Sleek dark themes, Glassmorphism, animations) coupled with Bootstrap 5 grid utilities.
-*   **Geospatial & Mapping:** Leaflet, React Leaflet, Mapbox GL, and Leaflet Routing Machine.
+*   **Geospatial & Mapping:** Leaflet, React Leaflet, and Leaflet Routing Machine.
 *   **Backend Integration:** Axios (configured with custom Interceptors, automatic JWT token checks, custom headers, and robust error fallback mechanisms).
 *   **Testing Suites:** React Testing Library, Jest.
 
@@ -65,27 +65,82 @@ graph TD
 ## 📂 Modular Workspace Directory Structure
 
 ```bash
-├── public/                 # Static Assets
-└── src/
-    ├── Admin/              # Enterprise Administration Panel
-    │   ├── API/            # Admin Dedicated Network Handlers
-    │   ├── Layout/         # Core Layout (Admin Sidebar, Navigation, Footer)
-    │   ├── Pages/          # Sub-dashboards (Category, E-waste, Users, Wallet)
-    │   └── Components/     # Modular Reusable Cards, Tables, Modals, Forms
-    ├── Component/          # Public User Platform
-    │   ├── E-Facility/     # Leaflet Map Integration & Geolocation Services
-    │   ├── E-Waste/        # E-Waste submission wizards & History Trackers
-    │   ├── Education/      # Educational Blog / Eco-CMS public view
-    │   ├── RewardCheckout/ # Cart Checkout, Address Selection, Checkout steps
-    │   ├── Rewards/        # Rewards Store, Product Detail page, Cart managers
-    │   ├── Rules/          # Incentive Point conversion guides
-    │   ├── User-Interface-API/ # Custom Axios Instances, JWT Auto-Checks
-    │   ├── Footer.jsx      # Premium responsive footer
-    │   ├── Header.jsx      # Navigation header with live Wallet indicator
-    │   └── PublicLayout.jsx# Core router routing layout for public visitors
-    ├── App.js              # Routing Split (Public Routes vs Admin Routes)
-    ├── index.js            # Entry Point
-    └── admin.css           # Highly curated style system for dashboard elements
+e-waste-frontend/
+├── public/                      # Static public assets (favicons, manifest.json)
+├── scripts/                     # Python utility & database scripts
+│   ├── add_sample_data.py
+│   ├── check_db.py
+│   └── ...
+├── src/
+│   ├── assets/                  # Global assets (images, logos, illustrations)
+│   │   ├── images/
+│   │   │   └── ewaste_illustration.png
+│   │   └── logo.svg
+│   │
+│   ├── components/              # Global reusable UI components
+│   │   ├── common/              # Common layout elements
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.jsx
+│   │   │   │   └── Header.css
+│   │   │   └── Footer/
+│   │   │       ├── Footer.jsx
+│   │   │       └── Footer.css
+│   │   │
+│   │   ├── ui/                  # Atom-level UI (Buttons, Inputs, Modals, Cards)
+│   │   │   └── CategoryFilter/  
+│   │   │       ├── CategoryFilter.jsx
+│   │   │       └── CategoryFilter.css
+│   │   └── UserFilter/          
+│   │       ├── UserFilter.jsx
+│   │       └── UserFilter.css
+│   │
+│   ├── features/                # Domain-specific modules (Self-contained logic)
+│   │   ├── admin/               # Admin features grouped logically
+│   │   │   ├── assets/          # Admin-specific styles/layouts
+│   │   │   │   └── admin.css
+│   │   │   ├── components/      # Shared admin UI components
+│   │   │   │   └── AdminHeader.jsx
+│   │   │   └── modules/         # Grouped admin business domains
+│   │   │       ├── users/       # Users, User Wallets
+│   │   │       ├── ewaste/      # Submissions, Status history
+│   │   │       ├── rewards/     # Rules, conditions, products, categories, orders, refunds
+│   │   │       ├── content/     # Home management, Education management
+│   │   │       └── catalogue/   # Brands, categories, models, mappings
+│   │   │
+│   │   ├── auth/                # Login, Sign-Up features
+│   │   │   ├── components/
+│   │   │   └── hooks/
+│   │   │
+│   │   └── user/                # User dashboard features (MyOrders, MyReturns, MyReplaces)
+│   │
+│   ├── layouts/                 # Layout wrappers
+│   │   ├── PublicLayout.jsx
+│   │   └── AdminLayout.jsx
+│   │
+│   ├── pages/                   # Standalone page views (Routing destinations)
+│   │   ├── About/
+│   │   ├── ContactUs/
+│   │   ├── Education/
+│   │   ├── FacilityMap/
+│   │   ├── Home/
+│   │   ├── RecyclingInfo/
+│   │   └── Rules/
+│   │
+│   ├── services/                # Global API service configurations
+│   │   └── api.js
+│   │
+│   ├── styles/                  # Global stylesheets
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── style.css
+│   │
+│   ├── App.js                   # Main routing definition
+│   └── index.js                 # React DOM bootstrapper
+│
+├── .env.example
+├── .gitignore
+├── package.json
+└── README.md
 ```
 
 ---
@@ -108,8 +163,7 @@ Follow these steps to set up the frontend environment:
 3.  **Environment Setup:**
     Create a `.env` file in the root directory based on `.env.example`:
     ```env
-    REACT_APP_API_URL=http://localhost:8000
-    REACT_APP_MAPBOX_TOKEN=your_mapbox_token_here
+    REACT_APP_API_URL=http://127.0.0.1:1000/
     ```
 
 4.  **Launch the Local Development Server:**
@@ -136,7 +190,7 @@ As the lead front-end developer for this platform, this project showcases my exp
 
 > [!IMPORTANT]
 > **2. High-Fidelity Maps & Navigation**
-> Engineered a customized geolocation experience using React-Leaflet and Mapbox GL. Rather than displaying boring static pointers, the platform actively maps driving/walking directions from the user's current coordinates to the chosen drop point.
+> Engineered a customized geolocation experience using React-Leaflet and Leaflet Routing Machine. Rather than displaying boring static pointers, the platform actively maps driving/walking directions from the user's current coordinates to the chosen drop point.
 
 > [!NOTE]
 > **3. Multi-Step Workflows & State Synchronization**

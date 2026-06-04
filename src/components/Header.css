@@ -1,0 +1,265 @@
+.elocate-header {
+    background-color: #0d2812;
+    color: #c8e6c9;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.elocate-header .navbar-nav .nav-link {
+    color: #c8e6c9 !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+@media (min-width: 992px) {
+    .elocate-header .navbar-nav {
+        flex-wrap: nowrap !important;
+    }
+}
+
+.elocate-header .navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+.elocate-header .navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    position: relative;
+}
+
+.elocate-header .navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background-color: #c8e6c9;
+    border-radius: 2px;
+}
+
+.elocate-header .logo {
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.elocate-header .logo:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.elocate-header .sign-in-btn {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    color: #0d2812 !important;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.elocate-header .sign-in-btn:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #c8e6c9 100%);
+    color: #0d2812 !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.elocate-header .sign-in-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.elocate-header .sign-in-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.elocate-header .sign-in-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Right: User Dropdown */
+.elocate-header .admin-user-box {
+    margin-left: 10px;
+}
+
+@media (min-width: 1200px) {
+    .elocate-header .admin-user-box {
+        margin-left: 20px;
+    }
+}
+
+.elocate-header .admin-user-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 16px;
+    padding-right: 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(200, 230, 201, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.elocate-header .admin-user-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(200, 230, 201, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.elocate-header .user-avatar {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #0d2812;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.elocate-header .user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.elocate-header .admin-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 15px);
+    width: 240px;
+    background: rgba(13, 40, 18, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid rgba(200, 230, 201, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: slideDown 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.elocate-header .dropdown-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(200, 230, 201, 0.05);
+    border-bottom: 1px solid rgba(200, 230, 201, 0.1);
+}
+
+.elocate-header .user-avatar.big {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+}
+
+.elocate-header .logout-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background: transparent;
+    border: none;
+    color: #ff9b9b;
+    font-weight: 600;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.elocate-header .logout-btn:hover {
+    background: rgba(255, 155, 155, 0.1);
+    color: #ffbaba;
+    padding-left: 25px;
+}
+
+/* Toggler icon color */
+.elocate-header .navbar-toggler {
+    border-color: rgba(200, 230, 201, 0.5);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.custom-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28200, 230, 201, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+
+
+
+
+
+
+
+
+/* Dropdown Menu Styling */
+.elocate-header .dropdown-menu {
+    background-color: #0d2812;
+    border: 1px solid rgba(200, 230, 201, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.elocate-header .dropdown-item {
+    color: #c8e6c9 !important;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.elocate-header .dropdown-item:hover {
+    background-color: rgba(200, 230, 201, 0.1);
+    color: #ffffff !important;
+    padding-left: 25px;
+}
+
+.elocate-header .dropdown-item.active {
+    background-color: rgba(200, 230, 201, 0.2);
+    color: #ffffff !important;
+}
+
+/* Dropdown Toggle Arrow */
+.elocate-header .dropdown-toggle::after {
+    vertical-align: middle;
+    margin-left: 8px;
+    color: #c8e6c9;
+}

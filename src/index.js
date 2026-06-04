@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './assets/styles/index.css';
+import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // Bootstrap global
@@ -9,14 +9,14 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 // css Global
-import "./assets/styles/style.css";
-import './assets/styles/admin.css';
+import "./styles/style.css";
+import './features/admin/assets/admin.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <App />
+  <App />
   // </React.StrictMode>
 );
 

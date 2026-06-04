@@ -7,3 +7,11 @@ build/
 # Environment configuration file (stores API keys and secret variables)
 .env
 
+# Local backup files (old "copy" files - not needed in version control)
+.backups/
+
+# Migration script (temporary - not needed in repo)
+migrate.ps1
+
+# Structure Plan (temporary - not needed in repo)
+STRUCTURE_PLAN.md

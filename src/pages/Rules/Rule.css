@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.rule-premium-page {
+    --emerald-primary: #10b981;
+    --emerald-dark: #064e3b;
+    --emerald-bright: #34d399;
+    --dark-bg: #0f172a;
+    --soft-green: #f0fdf4;
+    --soft-red: #fef2f2;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.max-w-800 {
+    max-width: 800px;
+}
+
+.text-emerald {
+    color: var(--emerald-primary);
+}
+
+.text-emerald-bright {
+    color: var(--emerald-bright);
+}
+
+.font-sm {
+    font-size: 0.95rem;
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* Header V5 */
+.rule-header-v5 {
+    background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+    padding: 100px 0 160px;
+    position: relative;
+    overflow: hidden;
+}
+
+.rule-header-v5::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.negative-mt-100 {
+    margin-top: -100px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Metadata Bar */
+.legal-portal-card {
+    border-radius: 32px !important;
+    overflow: hidden;
+    background: white;
+}
+
+.meta-bar {
+    background: #0f172a;
+    /* Custom Dark Color */
+    letter-spacing: 0.5px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.v-sep {
+    height: 15px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Background Gradients */
+.bg-light-gradient {
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+}
+
+/* Chapter & Rule Styles */
+.ch-num {
+    width: 40px;
+    height: 40px;
+    background: var(--dark-bg);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 800;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, var(--emerald-dark), #1e293b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rule-v5-card {
+    transition: 0.3s;
+    background: white;
+}
+
+.rule-v5-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--emerald-primary) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.def-item {
+    transition: 0.3s;
+}
+
+.def-item:hover {
+    background: var(--soft-green) !important;
+}
+
+.rule-v5-index {
+    width: 34px;
+    height: 34px;
+    background: var(--emerald-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.bg-soft-green {
+    background: var(--soft-green);
+}
+
+.bg-soft-red {
+    background: var(--soft-red);
+}
+
+.border-emerald {
+    border-color: var(--emerald-primary) !important;
+}
+
+/* Hover Lift */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.legal-portal-card {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .rule-header-v5 {
+        padding: 80px 0 120px;
+    }
+
+    .negative-mt-100 {
+        margin-top: -60px;
+    }
+
+    .ch-num {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+}

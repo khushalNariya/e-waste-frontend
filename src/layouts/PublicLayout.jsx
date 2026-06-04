@@ -1,36 +1,35 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Home from '../pages/user/home/Home';
-import About from '../pages/user/about/About';
-import Login from '../pages/user/auth/Login';
-import SignUp from '../pages/user/auth/Sign-Up';
-import FacilityMap from '../pages/user/e-facility/FacilityMap';
-import Recycle from '../pages/user/recycling-info/Recycle';
-import Education from '../pages/user/education/Education';
-import EducationDetail from '../pages/user/education/EducationDetail';
-import EducationDetails from '../pages/user/education/EducationDetail copy';
-import Contact_Us from '../pages/user/contact-us/Contact_Us';
-import Rule from '../pages/user/rules/Rule';
-import EWasteForm from '../pages/user/e-waste/EWasteForm';
-import EWasteHistory from '../pages/user/e-waste/EWasteHistory';
-import RewardRules from '../pages/user/rewards/RewardRules';
-import RewardStore from '../pages/user/rewards/RewardStore';
-import RewardProductDetail from '../pages/user/rewards/RewardProductDetail';
-import Cart from '../pages/user/rewards/Cart';
-import Checkout from '../pages/user/rewards-checkout/Checkout';
-import OrderConfirmation from '../pages/user/rewards-checkout/OrderConfirmation';
-import MyOrders from '../pages/user/rewards-checkout/MyOrders';
-import MyReturns from '../pages/user/rewards-checkout/MyReturns';
-import MyReplaces from '../pages/user/rewards-checkout/MyReplaces';
-// import ScrollToTop from '../utils/scrollToTop';
+import Header from '../components/common/Header/Header';
+import Footer from '../components/common/Footer/Footer';
+import Home from '../pages/Home/Home';
+import About from '../pages/About/About';
+import Login from '../features/auth/components/Login';
+import SignUp from '../features/auth/components/Sign-Up';
+import FacilityMap from '../pages/FacilityMap/FacilityMap';
+import Recycle from '../pages/RecyclingInfo/Recycle';
+import Education from '../pages/Education/Education';
+import EducationDetails from '../pages/Education/EducationDetail copy';
+import ContactUs from '../pages/ContactUs/Contact_Us';
+import Rule from '../pages/Rules/Rule';
+import EWasteForm from '../features/ewaste/EWasteForm';
+import EWasteHistory from '../features/ewaste/EWasteHistory';
+import RewardRules from '../features/rewards/RewardRules';
+import RewardStore from '../features/rewards/RewardStore';
+import RewardProductDetail from '../features/rewards/RewardProductDetail';
+import Cart from '../features/rewards/Cart';
+import Checkout from '../features/user/checkout/Checkout';
+import OrderConfirmation from '../features/user/checkout/OrderConfirmation';
+import MyOrders from '../features/user/checkout/MyOrders';
+import MyReturns from '../features/user/checkout/MyReturns';
+import MyReplaces from '../features/user/checkout/MyReplaces';
+// import ScrollToTop from '../pages/Education/ScrollToTop';
 
-import RewardRules_2 from '../pages/user/rewards-legacy/v1/RewardRules';
-import RewardStore_2 from '../pages/user/rewards-legacy/v1/RewardStore';
-import RewardProductDetail_2 from '../pages/user/rewards-legacy/v1/RewardProductDetail';
-import Cart_2 from '../pages/user/rewards-legacy/v2/Cart';
+import RewardRulesV2 from '../features/rewardsV2/RewardRules';
+import RewardStoreV2 from '../features/rewardsV2/RewardStore';
+import RewardProductDetailV2 from '../features/rewardsV2/RewardProductDetail';
+import CartV1 from '../features/rewardsV2/CartV1';
 
 
 const PublicLayout = () => {
@@ -54,7 +53,7 @@ const PublicLayout = () => {
                 {/* <Route path="/education/:id" element={<EducationDetail/>} /> */}
                 <Route path="/education/:slug" element={<EducationDetails />} />
 
-                <Route path="/contactus" element={<Contact_Us />} />
+                <Route path="/contactus" element={<ContactUs />} />
                 <Route path="/rules" element={<Rule />} />
 
                 <Route path="/E-Waste-Form" element={<EWasteForm />} />
@@ -76,11 +75,11 @@ const PublicLayout = () => {
                 
                 
                 
-                <Route path="/reward-rules-2" element={<RewardRules_2 />} />
-                <Route path="/reward-store-2" element={<RewardStore_2 />} />
-                <Route path="/reward-item-2/:id" element={<RewardProductDetail_2 />} />
+                <Route path="/reward-rules-2" element={<RewardRulesV2 />} />
+                <Route path="/reward-store-2" element={<RewardStoreV2 />} />
+                <Route path="/reward-item-2/:id" element={<RewardProductDetailV2 />} />
                 
-                <Route path="/cart_2" element={<Cart_2 />} />
+                <Route path="/cart_2" element={<CartV1 />} />
                 
                 
             </Routes>

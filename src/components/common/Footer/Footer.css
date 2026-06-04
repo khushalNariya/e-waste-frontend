@@ -1,0 +1,115 @@
+.elocate-footer {
+    background-color: #0d2812;
+    /* Darker green */
+    color: #c8e6c9;
+    padding-top: 70px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.elocate-footer p {
+    color: #c8e6c9;
+    line-height: 1.7;
+}
+
+.elocate-footer a,
+.elocate-footer .footer-links a,
+.elocate-footer .footer-links li a {
+    color: #c8e6c9 !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.elocate-footer a:hover,
+.elocate-footer .footer-links a:hover,
+.elocate-footer .footer-links li a:hover {
+    color: #ffffff !important;
+    padding-left: 5px;
+}
+
+.elocate-footer .footer-title {
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 1.15rem;
+    margin-bottom: 30px !important;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2e7d32;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.elocate-footer .footer-links {
+    margin-bottom: 20px;
+}
+
+.elocate-footer .footer-links li {
+    margin-bottom: 15px;
+    /* Thoda jyada spacing */
+}
+
+/* Social icons spacing improvement */
+.elocate-footer .social-icons {
+    display: flex;
+    gap: 24px;
+    /* Zyada gap for spacing */
+    margin-top: 25px;
+}
+
+.elocate-footer .social-icons a {
+    background-color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.elocate-footer .social-icons a:hover {
+    background-color: #c8e6c9;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.elocate-footer .social-icons img {
+    filter: none !important;
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain;
+    display: block;
+}
+
+.elocate-footer .contact-icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+/* Bottom Bar */
+.elocate-footer .bottom-bar {
+    background-color: #061408;
+    /* Very dark bottom bar */
+    padding: 25px 0;
+    /* More padding string less compact */
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.elocate-footer .bottom-bar p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.elocate-footer .bottom-bar a {
+    font-size: 0.95rem;
+}
+
+.elocate-footer .bottom-bar a:hover {
+    padding-left: 0;
+}
+
+.elocate-footer .logo {
+    border-radius: 12px;
+}

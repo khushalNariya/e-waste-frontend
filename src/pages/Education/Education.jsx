@@ -1,0 +1,186 @@
+﻿import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Education.css";
+import { getEducation_Blogs } from "../../services/API_Service";
+
+const Education = () => {
+    const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedCategory, setSelectedCategory] = useState("All Topics");
+
+    const categories = [
+        "All Topics",
+        ...new Set(blogs.map(b => b.category))
+    ];
+
+    useEffect(() => {
+        document.title = "Education Hub | ELocate";
+
+        getEducation_Blogs()
+            .then(res => {
+                setBlogs(res.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoading(false);
+            });
+    }, []);
+
+    const filteredBlogs = selectedCategory === "All Topics"
+        ? blogs
+        : blogs.filter(b => b.category === selectedCategory);
+
+    // const featuredPost = blogs.find(b => b.isFeatured);
+    const featuredPosts = blogs.filter(b => b.isFeatured);
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        if (featuredPosts.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentSlide(prev =>
+                prev === featuredPosts.length - 1 ? 0 : prev + 1
+            );
+        }, 4000); // 4 sec auto slide
+
+        return () => clearInterval(interval);
+    }, [featuredPosts]);
+
+
+
+    return (
+        <div className="edu-container pb-5 ">
+            {/* HERO SECTION */}
+            <div className="edu-hero text-white py-5 mb-5 shadow-sm text-center">
+                <div className="container">
+                    <h1 className="display-4 fw-bold">E-Waste Education Hub</h1>
+                    <p className="lead opacity-75">Insights into sustainable electronics management.</p>
+                </div>
+            </div>
+
+            <div className="container">
+
+
+                {/* FEATURED SLIDER */}
+                {!loading && featuredPosts.length > 0 && selectedCategory === "All Topics" && (
+                    <div className="featured-slider mb-5">
+
+                        {featuredPosts.map((post, index) => (
+                            <div
+                                key={post.id}
+                                className={`slide ${index === currentSlide ? "active" : ""}`}
+                            >
+                                <img src={post.image} alt="" className="slider-image" />
+
+                                <div className="slider-content">
+                                    <span className="badge bg-success mb-2">
+                                        {post.category}
+                                    </span>
+
+                                    <h2>{post.title}</h2>
+                                    <p>{post.description.substring(0, 150)}...</p>
+
+                                    <Link to={`/education/${post.slug}`} className="slider-btn">
+                                        Read Full Article
+                                    </Link>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* DOTS */}
+                        <div className="slider-dots">
+                            {featuredPosts.map((_, index) => (
+                                <span
+                                    key={index}
+                                    className={index === currentSlide ? "dot active" : "dot"}
+                                    onClick={() => setCurrentSlide(index)}
+                                ></span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+
+                {/* CATEGORY BAR
+                <h3 className="fw-bold mb-4">Educational Resources</h3>
+
+                <div className="category-bar mb-5 d-flex flex-wrap justify-content-center gap-2">
+                    {categories.map(cat => (
+                        <button
+                            key={cat}
+                            onClick={() => setSelectedCategory(cat)}
+                            className={`category-pill ${selectedCategory === cat ? "active" : ""}`}
+                        >
+                            {cat}
+                        </button>
+                    ))}
+                </div> */}
+
+                {/* 3. CATEGORY FILTERS */}
+                <div className="mb-4">
+                    <h3 className="fw-bold mb-3">Educational Resources</h3>
+                    <div className="category-bar">
+                        {categories.map(cat => (
+                            <button
+                                key={cat}
+                                onClick={() => setSelectedCategory(cat)}
+                                className={`category-pill ${selectedCategory === cat ? "active" : ""}`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+
+                {/* GRID SECTION */}
+                <div className="row g-4">
+                    {filteredBlogs.map(blog => (
+                        <div className="col-md-6 col-lg-4" key={blog.id}>
+                            {/* <div className="edu-card h-100 shadow-sm border-0 rounded-4 bg-white overflow-hidden"> */}
+                            <div className="edu-card h-100 shadow-sm border-0 overflow-hidden">
+                                <div className="position-relative">
+                                    <img src={blog.image} alt={blog.title}
+                                        className="edu-card-img"
+                                    // style={{ height: '200px', objectFit: 'cover' }} 
+                                    />
+                                    {/* <span className="badge bg-white text-dark position-absolute top-0 start-0 m-3 shadow-sm">{blog.category}</span> */}
+                                    <span className="badge bg-success text-white position-absolute top-0 start-0 m-3 shadow-sm">{blog.category}</span>
+
+                                </div>
+
+                                <div className="card-body p-4 d-flex flex-column">
+                                    <div className="mb-2">
+                                        <small className="text-muted"><i className="bi bi-clock me-1"></i>{blog.readTime}</small>
+                                    </div>
+                                    <h5 className="fw-bold mb-3" style={{ fontSize: '1.1rem' }}>{blog.title}</h5>
+                                    <p className="text-muted small mb-4">
+                                        {blog.description.substring(0, 100)}...
+                                    </p>
+
+                                    <div className="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                        <div className="d-flex align-items-center">
+                                            {/* AUTOMATIC AVATAR FOR EACH CARD */}
+                                            <img src={`https://ui-avatars.com/api/?name=${blog.author}&background=random&color=fff`}
+                                                alt="author" className="rounded-circle me-2 border" width="35" height="35" />
+                                            <div>
+                                                <p className="mb-0 fw-bold small" style={{ lineHeight: '1' }}>{blog.author}</p>
+                                                <small className="text-muted" style={{ fontSize: '11px' }}>{blog.date}</small>
+                                            </div>
+                                        </div>
+                                        <Link to={`/education/${blog.slug}`} className="read_more_link">
+                                            Read More
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Education;

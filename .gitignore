@@ -13,4 +13,4 @@ build/
 # Migration script (temporary - not needed in repo)
 migrate.ps1
 
-# STRUCTURE_PLAN.md
+STRUCTURE_PLAN.md
